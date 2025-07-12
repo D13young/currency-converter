@@ -1,0 +1,258 @@
+:root {
+  --primary: #3498db;
+  --secondary: #2ecc71;
+  --danger: #e74c3c;
+  --light: #ecf0f1;
+  --dark: #34495e;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: black;
+  background-color: #f5f7fa;
+  padding: 20px;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: black;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid red;
+}
+
+h1 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.currency-pairs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.currency-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  background: var(--light);
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.currency-input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.currency-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  color: var(--dark);
+}
+
+.currency-code {
+  display: inline-block;
+  min-width: 50px;
+  padding: 4px 10px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.currency-input input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.exchange-icon {
+  text-align: center;
+  font-size: 24px;
+  color: var(--primary);
+}
+
+.remove-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--danger);
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-pair {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.pair-selectors {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+.pair-selectors select {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  flex: 1;
+}
+
+.pair-selectors button {
+  padding: 10px 20px;
+  background: var(--secondary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pair-selectors button:hover {
+  background: #27ae60;
+}
+
+footer {
+  margin-top: 30px;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid red;
+  color: #7f8c8d;
+}
+
+.loading, .error {
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.loading {
+  background: #f9f9f9;
+  color: var(--primary);
+}
+
+.error {
+  background: #ffebee;
+  color: var(--danger);
+}
+
+@media (max-width: 768px) {
+  .currency-pairs {
+    grid-template-columns: 1fr;
+  }
+  
+  .pair-selectors {
+    flex-direction: column;
+  }
+  
+  .pair-selectors select {
+    width: 100%;
+  }
+  
+  .pair-selectors button {
+    width: 100%;
+  }
+}
+
+.warning {
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  margin: 10px 0;
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.app-loading, .app-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #3498db;
+  animation: spin 1s ease-in-out infinite;
+  margin: 20px auto;
+}
+
+.spinner.small {
+  width: 30px;
+  height: 30px;
+  border-width: 3px;
+  margin: 10px auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.app-error button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.app-error button:hover {
+  background-color: #2980b9;
+}
+
+.last-updated {
+  font-size: 0.9em;
+  color: #7f8c8d;
+  margin-top: 5px;
+}
